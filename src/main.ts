@@ -12,7 +12,8 @@ interface Result {
 
 async function run(): Promise<void> {
   try {
-    if (!github.context.issue.number) {
+    const pullRequestId = core.getInput('prID')
+    if (!pullRequestId) {
       core.warning('Cannot find the PR id.')
       return
     }

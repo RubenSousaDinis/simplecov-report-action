@@ -9,7 +9,7 @@ export async function report(coveredPercent: number, failedThreshold: number): P
     [`${coveredPercent}%`, `${failedThreshold}%`]
   ])
 
-  const pullRequestId = github.context.issue.number
+  const pullRequestId = core.getInput('prID')
   if (!pullRequestId) {
     throw new Error('Cannot find the PR id.')
   }
